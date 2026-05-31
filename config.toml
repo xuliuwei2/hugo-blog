@@ -1,0 +1,34 @@
+baseURL = 'https://xuliuwei2.github.io/hugo-blog/'
+languageCode = 'zh-cn'
+title = '徐流巍的博客'
+theme = 'PaperMod'
+
+[params]
+  env = 'production'
+  defaultTheme = 'auto'
+  description = '徐流巍的个人博客'
+  author = '徐流巍'
+  defaultAuthor = '徐流巍'
+
+[params.homePageParams]
+  subtitle = '中药学博士 | 科研与生活'
+
+[params.assets]
+  disableThemeToggle = false
+
+[params.fuse]
+  disabled = false
+  minMatchCharLength = 2
+  threshold = 0.3
+
+[[params.social]]
+  name = "GitHub"
+  url = "https://github.com/xuliuwei2"
+
+[[params.social]]
+  name = "Email"
+  url = "mailto:xuliuwei2@qq.com"
+
+[module]
+  [[module.imports]]
+    path = 'github.com/adityatelange/hugo-PaperMod'
