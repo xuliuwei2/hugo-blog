@@ -1,0 +1,6 @@
+# Build output
+public/
+resources/
+
+# Local config
+config.yaml
