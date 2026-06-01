@@ -29,6 +29,4 @@ theme = 'PaperMod'
   name = "Email"
   url = "mailto:xuliuwei2@qq.com"
 
-[module]
-  [[module.imports]]
-    path = 'github.com/adityatelange/hugo-PaperMod'
+
