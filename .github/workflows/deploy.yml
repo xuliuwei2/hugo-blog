@@ -26,7 +26,7 @@ jobs:
 
       - name: Download Hugo Extended
         run: |
-          HUGO_VER="0.139.3"
+          HUGO_VER="0.147.2"
           echo "Downloading Hugo $HUGO_VER..."
           curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_extended_${HUGO_VER}_linux-amd64.deb" -o /tmp/hugo.deb
           sudo dpkg -i /tmp/hugo.deb
