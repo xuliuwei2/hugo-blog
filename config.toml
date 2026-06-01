@@ -21,6 +21,54 @@ theme = 'PaperMod'
   minMatchCharLength = 2
   threshold = 0.3
 
+# ==================== 导航菜单 ====================
+[[menu.main]]
+  identifier = "home"
+  name = "首页"
+  title = "首页"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "research"
+  name = "科研"
+  title = "科研"
+  url = "/research-notes/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "tcm"
+  name = "中医药"
+  title = "中医药科普"
+  url = "/tcm-science/"
+  weight = 25
+
+[[menu.main]]
+  identifier = "tutorials"
+  name = "教程"
+  title = "教程"
+  url = "/tutorials/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "life"
+  name = "生活"
+  title = "生活随笔"
+  url = "/life-essay/"
+  weight = 40
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  title = "关于我"
+  url = "/about/"
+  weight = 50
+
+# ==================== 分类标签 ====================
+[taxonomy]
+  category = "categories"
+  tag = "tags"
+
 [[params.social]]
   name = "GitHub"
   url = "https://github.com/xuliuwei2"

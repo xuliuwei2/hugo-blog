@@ -1,7 +1,8 @@
 ---
 title: "你好，世界"
-date: 2024-06-01T12:00:00+08:00
-draft: false
+date: 2024-06-01
+description: "欢迎来到我的个人空间"
+categories: ["生活随笔"]
 tags: ["记录"]
 ---
 
