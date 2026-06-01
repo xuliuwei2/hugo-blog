@@ -17,8 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.139.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,26 +24,44 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: true
-
-      - name: Build with Hugo
+      - name: Download Hugo Extended
         run: |
-          echo "=== Hugo version ==="
+          HUGO_VER="0.139.3"
+          echo "Downloading Hugo $HUGO_VER..."
+          curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_extended_${HUGO_VER}_linux-amd64.deb" -o /tmp/hugo.deb
+          sudo dpkg -i /tmp/hugo.deb
           hugo version
-          echo "=== Directory structure ==="
+
+      - name: Debug Environment
+        run: |
+          echo "PWD: $(pwd)"
+          echo "Files:"
           ls -la
-          echo "=== Themes ==="
+          echo "Themes:"
           ls -la themes/
-          echo "=== Config ==="
+          echo "Theme contents:"
+          ls themes/PaperMod/layouts/ 2>&1 || echo "Theme layouts missing!"
+          echo "Config:"
           cat config.toml
-          echo "=== Building ==="
-          hugo --minify 2>&1 || echo "BUILD FAILED"
-          echo "=== Build output ==="
-          ls -la public/ 2>/dev/null || echo "No public directory"
+          echo "---"
+          cat .nojekyll
+
+      - name: Build Site
+        id: build
+        run: |
+          echo "=== Starting Hugo build ==="
+          hugo --minify --logLevel debug 2>&1 | tee /tmp/hugo-build.log
+          BUILD_EXIT=${PIPESTATUS[0]}
+          echo "Exit code: $BUILD_EXIT"
+          if [ $BUILD_EXIT -eq 0 ]; then
+            echo "Build succeeded"
+            ls -la public/
+          else
+            echo "Build failed with exit code $BUILD_EXIT"
+            echo "Last 50 lines of output:"
+            tail -50 /tmp/hugo-build.log
+            exit 1
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
