@@ -18,7 +18,7 @@ date: 2024-06-01
 ## 联系方式
 
 - **GitHub**: [xuliuwei2](https://github.com/xuliuwei2)
-- **Email**: xuliuwei2@qq.com
+- **Email**: 1270840894@qq.com
 
 ## 本站
 
